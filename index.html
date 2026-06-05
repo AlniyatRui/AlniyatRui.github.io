@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Junrui's personal academic homepage." />
+  <title>Junrui | CoSTA Lab</title>
+  <link rel="icon" type="image/png" href="costa-favicon-ink-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: #f5f1ea;
+      color: #003D7C;
+      font-family: "Inter Tight", Inter, sans-serif;
+    }
+    a { color: inherit; }
+    #root:empty::before {
+      content: "";
+      display: block;
+      height: 100vh;
+    }
+    @media (max-width: 720px) {
+      .page-shell { padding: 32px 20px 56px !important; }
+      .hero { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .hero-title { font-size: 48px !important; }
+      .section-grid { grid-template-columns: 1fr !important; }
+      .project-grid { grid-template-columns: 1fr !important; }
+      .footer-row { align-items: flex-start !important; flex-direction: column !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel" src="tokens.jsx"></script>
+
+  <script type="text/babel" data-presets="react">
+    const { WaveGlyph, TOKENS } = window;
+
+    const PROFILE = {
+      name: "Junrui",
+      title: "Researcher in language models and agent systems",
+      affiliation: "CoSTA Lab, National University of Singapore",
+      location: "Singapore",
+      email: "your.email@example.com",
+      github: "https://github.com/AlniyatRui",
+      scholar: "#",
+      cv: "#",
+      intro:
+        "I build and evaluate language-model systems, with an interest in reasoning, agent workflows, prompt optimization, and reliable AI evaluation.",
+    };
+
+    const RESEARCH_AREAS = [
+      "Language-model reasoning and evaluation",
+      "Agentic systems for research automation",
+      "Prompt optimization and controllable generation",
+      "Robustness, uncertainty, and trustworthy AI",
+    ];
+
+    const PROJECTS = [
+      {
+        name: "Auto-Prompt-Optimization",
+        meta: "Prompt optimization",
+        href: "https://github.com/AlniyatRui/Auto-Prompt-Optimization",
+        description: "A research codebase for automated prompt optimization experiments.",
+      },
+      {
+        name: "AgenTracer",
+        meta: "Agent workflows",
+        href: "https://github.com/AlniyatRui/AgenTracer",
+        description: "A project space for tracing, analyzing, and improving agent behavior.",
+      },
+      {
+        name: "VARMAT",
+        meta: "Model systems",
+        href: "https://github.com/AlniyatRui/VARMAT",
+        description: "Selected research code and experiments for language-model systems.",
+      },
+    ];
+
+    const PUBLICATIONS = [
+      {
+        title: "Add your selected paper title here",
+        venue: "Conference or preprint, year",
+        authors: "Author list",
+        href: "#",
+      },
+      {
+        title: "Add another representative paper",
+        venue: "Conference or preprint, year",
+        authors: "Author list",
+        href: "#",
+      },
+    ];
+
+    const NEWS = [
+      "Replace this with a recent paper, release, award, or talk.",
+      "Keep this section short so the homepage stays easy to scan.",
+    ];
+
+    function monoLabel(text) {
+      return {
+        fontFamily: TOKENS.type.mono.stack,
+        fontSize: 11,
+        letterSpacing: 0,
+        textTransform: "uppercase",
+        color: TOKENS.color.ink.value,
+        opacity: 0.68,
+      };
+    }
+
+    function LinkButton({ href, children }) {
+      return (
+        <a
+          href={href}
+          style={{
+            border: `1px solid ${TOKENS.color.fog.value}`,
+            borderRadius: TOKENS.radius.pill,
+            color: TOKENS.color.ink.value,
+            display: "inline-flex",
+            fontFamily: TOKENS.type.mono.stack,
+            fontSize: 12,
+            fontWeight: 500,
+            letterSpacing: 0,
+            padding: "10px 14px",
+            textDecoration: "none",
+          }}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    function Section({ title, children }) {
+      return (
+        <section style={{ borderTop: `1px solid ${TOKENS.color.fog.value}`, paddingTop: 24, marginTop: 56 }}>
+          <div style={{ ...monoLabel(title), marginBottom: 18 }}>{title}</div>
+          {children}
+        </section>
+      );
+    }
+
+    function ProjectCard({ project }) {
+      return (
+        <a
+          href={project.href}
+          style={{
+            background: "rgba(255,255,255,0.36)",
+            border: `1px solid ${TOKENS.color.fog.value}`,
+            borderRadius: TOKENS.radius.sm,
+            boxShadow: TOKENS.shadow.card,
+            color: TOKENS.color.ink.value,
+            display: "block",
+            minHeight: 172,
+            padding: 22,
+            textDecoration: "none",
+          }}
+        >
+          <div style={{ ...monoLabel(project.meta), color: TOKENS.color.accent.value, opacity: 1 }}>{project.meta}</div>
+          <h3 style={{ fontSize: 22, lineHeight: 1.12, margin: "14px 0 12px", letterSpacing: 0 }}>
+            {project.name}
+          </h3>
+          <p style={{ fontFamily: TOKENS.type.editorial.stack, fontSize: 17, lineHeight: 1.5, margin: 0 }}>
+            {project.description}
+          </p>
+        </a>
+      );
+    }
+
+    function Page() {
+      const ink = TOKENS.color.ink.value;
+      const paper = TOKENS.color.paper.value;
+      const paperWarm = TOKENS.color.paperWarm.value;
+      const accent = TOKENS.color.accent.value;
+
+      return (
+        <main style={{ background: `linear-gradient(180deg, ${paper} 0%, ${paperWarm} 100%)`, minHeight: "100vh" }}>
+          <div className="page-shell" style={{ maxWidth: 1120, margin: "0 auto", padding: "56px 56px 76px" }}>
+            <header style={{ display: "flex", justifyContent: "space-between", gap: 24, alignItems: "center", marginBottom: 72 }}>
+              <a href="/" style={{ alignItems: "center", color: ink, display: "inline-flex", gap: 14, textDecoration: "none" }}>
+                <WaveGlyph size={42} rx={21} stroke={3} />
+                <span style={{ ...monoLabel("CoSTA Lab / Personal Page"), opacity: 0.78 }}>CoSTA Lab / Personal Page</span>
+              </a>
+              <nav style={{ display: "flex", flexWrap: "wrap", gap: 10, justifyContent: "flex-end" }}>
+                <LinkButton href={`mailto:${PROFILE.email}`}>Email</LinkButton>
+                <LinkButton href={PROFILE.github}>GitHub</LinkButton>
+                <LinkButton href={PROFILE.scholar}>Scholar</LinkButton>
+                <LinkButton href={PROFILE.cv}>CV</LinkButton>
+              </nav>
+            </header>
+
+            <section className="hero" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1.4fr) minmax(280px, 0.6fr)", gap: 56, alignItems: "end" }}>
+              <div>
+                <div style={{ ...monoLabel(PROFILE.affiliation), marginBottom: 18 }}>{PROFILE.affiliation}</div>
+                <h1 className="hero-title" style={{ color: ink, fontSize: 76, lineHeight: 0.96, letterSpacing: 0, margin: "0 0 22px", maxWidth: 760 }}>
+                  {PROFILE.name}
+                </h1>
+                <p style={{ color: accent, fontSize: 24, fontWeight: 600, lineHeight: 1.25, margin: "0 0 22px", maxWidth: 760 }}>
+                  {PROFILE.title}
+                </p>
+                <p style={{ color: ink, fontFamily: TOKENS.type.editorial.stack, fontSize: 22, lineHeight: 1.5, margin: 0, maxWidth: 780 }}>
+                  {PROFILE.intro}
+                </p>
+              </div>
+              <aside style={{ borderLeft: `3px solid ${accent}`, paddingLeft: 22 }}>
+                <div style={{ ...monoLabel("Current Focus"), marginBottom: 16 }}>Current Focus</div>
+                <ul style={{ display: "grid", gap: 12, listStyle: "none", margin: 0, padding: 0 }}>
+                  {RESEARCH_AREAS.map((area) => (
+                    <li key={area} style={{ fontSize: 17, lineHeight: 1.35 }}>{area}</li>
+                  ))}
+                </ul>
+              </aside>
+            </section>
+
+            <Section title="News">
+              <div style={{ display: "grid", gap: 12 }}>
+                {NEWS.map((item) => (
+                  <div key={item} style={{ display: "grid", gridTemplateColumns: "18px 1fr", gap: 12, alignItems: "start" }}>
+                    <span style={{ background: accent, borderRadius: TOKENS.radius.pill, display: "block", height: 8, marginTop: 9, width: 8 }} />
+                    <span style={{ fontSize: 18, lineHeight: 1.45 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </Section>
+
+            <Section title="Selected Projects">
+              <div className="project-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: 18 }}>
+                {PROJECTS.map((project) => <ProjectCard key={project.name} project={project} />)}
+              </div>
+            </Section>
+
+            <Section title="Selected Publications">
+              <div style={{ display: "grid", gap: 18 }}>
+                {PUBLICATIONS.map((paper) => (
+                  <a key={paper.title} href={paper.href} style={{ color: ink, display: "block", textDecoration: "none" }}>
+                    <div style={{ fontSize: 21, fontWeight: 650, lineHeight: 1.22 }}>{paper.title}</div>
+                    <div style={{ fontFamily: TOKENS.type.editorial.stack, fontSize: 17, lineHeight: 1.45, marginTop: 6 }}>
+                      {paper.authors}
+                    </div>
+                    <div style={{ ...monoLabel(paper.venue), color: accent, marginTop: 8, opacity: 1 }}>{paper.venue}</div>
+                  </a>
+                ))}
+              </div>
+            </Section>
+
+            <Section title="Contact">
+              <div className="section-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
+                <p style={{ fontFamily: TOKENS.type.editorial.stack, fontSize: 20, lineHeight: 1.5, margin: 0 }}>
+                  I am always glad to hear from people working on language-model evaluation, agent systems, and research automation.
+                </p>
+                <div style={{ display: "grid", gap: 10, alignContent: "start" }}>
+                  <a href={`mailto:${PROFILE.email}`} style={{ fontSize: 18, fontWeight: 600, textDecoration: "none" }}>{PROFILE.email}</a>
+                  <span style={{ fontSize: 18 }}>{PROFILE.location}</span>
+                </div>
+              </div>
+            </Section>
+
+            <footer className="footer-row" style={{ borderTop: `1px solid ${TOKENS.color.fog.value}`, display: "flex", gap: 24, justifyContent: "space-between", marginTop: 72, paddingTop: 24, alignItems: "center" }}>
+              <div style={{ ...monoLabel("Built with the CoSTA Lab design system"), opacity: 0.72 }}>Built with the CoSTA Lab design system</div>
+              <img src="nus-logo-black-horizontal.jpg" alt="National University of Singapore" style={{ display: "block", height: 34, objectFit: "contain" }} />
+            </footer>
+          </div>
+        </main>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<Page />);
+  </script>
+</body>
+</html>
