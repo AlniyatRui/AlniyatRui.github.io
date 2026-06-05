@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Junrui's personal academic homepage." />
-  <title>Junrui | CoSTA Lab</title>
+  <meta name="description" content="Junrui Zhang's personal academic homepage." />
+  <title>Junrui Zhang | CoSTA Lab</title>
   <link rel="icon" type="image/png" href="costa-favicon-ink-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500&display=swap" />
   <style>
     :root {
       --ink: #003D7C;
@@ -19,7 +19,7 @@
       --sand: #f6d7b0;
       --fog: #d7dde6;
       --display: "Inter Tight", Inter, sans-serif;
-      --editorial: Fraunces, "Times New Roman", serif;
+      --editorial: "Source Serif 4", Georgia, "Times New Roman", serif;
       --mono: "JetBrains Mono", ui-monospace, monospace;
       --shadow-card: 0 1px 3px rgba(15,29,43,.08), 0 8px 24px rgba(15,29,43,.06);
     }
@@ -113,12 +113,17 @@
       grid-template-columns: minmax(0, 1.4fr) minmax(280px, .6fr);
     }
 
+    .hero-solo {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
     .eyebrow {
       margin-bottom: 18px;
     }
 
     h1 {
       color: var(--ink);
+      font-family: var(--editorial);
       font-size: 76px;
       letter-spacing: 0;
       line-height: .96;
@@ -128,6 +133,7 @@
 
     .tagline {
       color: var(--accent);
+      font-family: var(--editorial);
       font-size: 24px;
       font-weight: 600;
       line-height: 1.25;
@@ -169,15 +175,19 @@
     }
 
     .section-title {
+      font-size: 13px;
+      font-weight: 500;
       margin-bottom: 18px;
+      opacity: .9;
     }
 
     .news-list li {
       display: grid;
-      font-size: 18px;
+      font-family: var(--editorial);
+      font-size: 19px;
       gap: 12px;
       grid-template-columns: 18px 1fr;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     .dot {
@@ -185,7 +195,7 @@
       border-radius: 9999px;
       display: block;
       height: 8px;
-      margin-top: 9px;
+      margin-top: 10px;
       width: 8px;
     }
 
@@ -221,8 +231,20 @@
 
     .project-card p,
     .publication-authors,
-    .contact-copy {
+    .contact-copy,
+    .about-copy {
       font-family: var(--editorial);
+    }
+
+    .about-copy {
+      font-size: 20px;
+      line-height: 1.55;
+      margin: 0;
+      max-width: none;
+    }
+
+    .about-copy + .about-copy {
+      margin-top: 16px;
     }
 
     .project-card p {
@@ -233,28 +255,163 @@
 
     .publication-list {
       display: grid;
-      gap: 18px;
+      gap: 28px;
     }
 
     .publication {
-      display: block;
+      align-items: center;
+      display: grid;
+      gap: 26px;
+      grid-template-columns: minmax(320px, 460px) minmax(0, 1fr);
       text-decoration: none;
     }
 
+    .publication-thumb {
+      align-items: center;
+      border: 1px solid var(--fog);
+      border-radius: 8px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .publication-thumb-wide {
+      aspect-ratio: 3 / 1;
+    }
+
+    .publication-thumb-balanced {
+      aspect-ratio: 11 / 5;
+    }
+
+    .publication-thumb-light {
+      background: #fff;
+    }
+
+    .publication-thumb img {
+      display: block;
+      height: 100%;
+      object-fit: contain;
+      width: 100%;
+    }
+
+    .publication-badge {
+      background: var(--ink);
+      border-radius: 9999px;
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0;
+      padding: 7px 10px;
+      position: absolute;
+      right: 10px;
+      text-transform: uppercase;
+      top: 10px;
+    }
+
     .publication-title {
+      font-family: var(--editorial);
       font-size: 21px;
       font-weight: 650;
-      line-height: 1.22;
+      line-height: 1.26;
     }
 
     .publication-authors {
       font-size: 17px;
       line-height: 1.45;
-      margin-top: 6px;
+      margin-top: 8px;
+    }
+
+    .publication-authors strong {
+      font-family: inherit;
+      font-weight: 700;
+    }
+
+    .publication-authors sup,
+    .publication-note sup {
+      font-family: var(--display);
+      font-size: .7em;
+      line-height: 0;
     }
 
     .venue {
       margin-top: 8px;
+    }
+
+    .publication-note {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0;
+      margin-top: 16px;
+      opacity: .68;
+    }
+
+    .publication-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .publication-link {
+      border: 1px solid var(--fog);
+      border-radius: 9999px;
+      color: var(--accent);
+      display: inline-flex;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 8px 12px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .fun-gallery {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .fun-photo-card {
+      margin: 0;
+    }
+
+    .fun-photo-slot {
+      align-items: center;
+      aspect-ratio: 16 / 10;
+      background: rgba(255,255,255,.34);
+      border: 1px solid var(--fog);
+      border-radius: 8px;
+      box-shadow: var(--shadow-card);
+      color: var(--ink);
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .fun-photo-slot img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .fun-photo-slot-f1 img {
+      object-position: center center;
+    }
+
+    .fun-caption {
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0;
+      margin-top: 9px;
+      opacity: .56;
+      text-transform: uppercase;
     }
 
     .contact-grid {
@@ -313,8 +470,14 @@
 
       .hero,
       .project-grid,
-      .contact-grid {
+      .contact-grid,
+      .publication,
+      .fun-gallery {
         grid-template-columns: 1fr;
+      }
+
+      .publication-thumb {
+        max-width: 100%;
       }
 
       .hero {
@@ -340,23 +503,20 @@
         <span class="mono muted">CoSTA Lab / Personal Page</span>
       </a>
       <nav class="nav" aria-label="Profile links">
-        <a class="button" href="mailto:your.email@example.com">Email</a>
+        <a class="button" href="mailto:zhangjunrui@mail.ustc.edu.cn">Email</a>
         <a class="button" href="https://github.com/AlniyatRui">GitHub</a>
-        <a class="button" href="#">Scholar</a>
+        <a class="button" href="https://scholar.google.com/citations?user=n7fNKpYAAAAJ">Scholar</a>
         <a class="button" href="#">CV</a>
       </nav>
     </header>
 
-    <section class="hero" aria-label="Introduction">
+    <section class="hero hero-solo" aria-label="Introduction">
       <div>
-        <div class="mono muted eyebrow">CoSTA Lab, National University of Singapore</div>
-        <h1>Junrui</h1>
-        <p class="tagline">Researcher in language models and agent systems</p>
-        <p class="intro">
-          I build and evaluate language-model systems, with an interest in reasoning,
-          agent workflows, prompt optimization, and reliable AI evaluation.
-        </p>
+        <div class="mono muted eyebrow">CoSTA Lab, ECE, <a href="https://www.nus.edu.sg/">National University of Singapore</a></div>
+        <h1>Junrui Zhang</h1>
+        <p class="tagline">Research Assistant in CoSTA@NUS Lab, ECE</p>
       </div>
+      <!--
       <aside class="focus">
         <div class="mono muted section-title">Current Focus</div>
         <ul>
@@ -366,16 +526,37 @@
           <li>Robustness, uncertainty, and trustworthy AI</li>
         </ul>
       </aside>
+      -->
+    </section>
+
+    <section>
+      <div class="mono muted section-title">About</div>
+      <p class="about-copy">
+        I am currently a Research Assistant in the <a href="https://costa-nus.github.io/">CoSTA@NUS Lab</a>, ECE,
+        advised by <a href="https://jyhong.gitlab.io/">Prof. Junyuan Hong</a>.
+        My research interests include large language models, machine learning, and robotics.
+      </p>
+      <p class="about-copy">
+        Before joining NUS, I received my master's degree in Computer Science from the
+        <a href="https://en.ustc.edu.cn/">University of Science and Technology of China (USTC)</a>,
+        advised by <a href="http://staff.ustc.edu.cn/~yanyongz/">Prof. Yanyong Zhang</a> and
+        <a href="https://faculty.ustc.edu.cn/JiJianmin/en/index.htm">Prof. Jianmin Ji</a>.
+        I received my bachelor's degree in Computer Science from
+        <a href="https://en.hfut.edu.cn/">Hefei University of Technology (HFUT)</a>, under the supervision of
+        <a href="https://kuiy.github.io/">Prof. Kui Yu</a>.
+      </p>
     </section>
 
     <section>
       <div class="mono muted section-title">News</div>
       <ul class="news-list">
-        <li><span class="dot"></span><span>Replace this with a recent paper, release, award, or talk.</span></li>
-        <li><span class="dot"></span><span>Keep this section short so the homepage stays easy to scan.</span></li>
+        <li><span class="dot"></span><span>One paper about multimodal robustness is accepted by AAAI 2026.</span></li>
+        <li><span class="dot"></span><span>One paper about trajectory planning is accepted by ICRA 2025.</span></li>
+        <li><span class="dot"></span><span>One paper about robot navigation is accepted by IROS 2024.</span></li>
       </ul>
     </section>
 
+    <!--
     <section>
       <div class="mono muted section-title">Selected Projects</div>
       <div class="project-grid">
@@ -396,23 +577,54 @@
         </a>
       </div>
     </section>
+    -->
 
     <section>
       <div class="mono muted section-title">Selected Publications</div>
       <div class="publication-list">
-        <a class="publication" href="#">
-          <div class="publication-title">Add your selected paper title here</div>
-          <div class="publication-authors">Author list</div>
-          <div class="mono venue">Conference or preprint, year</div>
-        </a>
-        <a class="publication" href="#">
-          <div class="publication-title">Add another representative paper</div>
-          <div class="publication-authors">Author list</div>
-          <div class="mono venue">Conference or preprint, year</div>
-        </a>
+        <div class="publication">
+          <div class="publication-thumb publication-thumb-light publication-thumb-balanced">
+            <img src="assets/varmat.png" alt="VARMAT method overview" />
+            <span class="publication-badge">AAAI 2026</span>
+          </div>
+          <div class="publication-content">
+            <div class="publication-title">Vulnerability-Aware Robust Multimodal Adversarial Training</div>
+            <div class="publication-authors"><strong>Junrui Zhang</strong>, Xinyu Zhao, Jie Peng, Chenjie Wang, Jianmin Ji<sup>*</sup>, Tianlong Chen</div>
+            <div class="publication-actions">
+              <a class="publication-link" href="https://arxiv.org/abs/2511.18138">Paper</a>
+              <a class="publication-link" href="https://github.com/AlniyatRui/VARMAT">Code</a>
+            </div>
+          </div>
+        </div>
+        <div class="publication">
+          <div class="publication-thumb publication-thumb-light publication-thumb-wide">
+            <img src="assets/cafe-ad.jpg" alt="CAFE-AD method overview" />
+            <span class="publication-badge">ICRA 2025</span>
+          </div>
+          <div class="publication-content">
+            <div class="publication-title">CAFE-AD: Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving</div>
+            <div class="publication-authors"><strong>Junrui Zhang</strong><sup>&dagger;</sup>, Chenjie Wang<sup>&dagger;</sup>, Jie Peng, Haoyu Li, Jianmin Ji<sup>*</sup>, Yu Zhang, Yanyong Zhang</div>
+            <div class="publication-actions">
+              <a class="publication-link" href="https://arxiv.org/abs/2504.06584">Paper</a>
+              <a class="publication-link" href="https://github.com/AlniyatRui/CAFE-AD">Code</a>
+            </div>
+          </div>
+        </div>
       </div>
+      <div class="publication-note"><sup>&dagger;</sup> Equal contribution. <sup>*</sup> Corresponding author.</div>
     </section>
 
+    <section>
+      <div class="mono muted section-title">Honors</div>
+      <ul class="news-list">
+        <li><span class="dot"></span><span>2026 Provincial Outstanding Graduate.</span></li>
+        <li><span class="dot"></span><span>2025 National Scholarship.</span></li>
+        <li><span class="dot"></span><span>2025 IEEE Travel Grant.</span></li>
+        <li><span class="dot"></span><span>2022 Huawei Intelligent Base Scholarship.</span></li>
+      </ul>
+    </section>
+
+    <!--
     <section>
       <div class="mono muted section-title">Contact</div>
       <div class="contact-grid">
@@ -426,10 +638,41 @@
         </div>
       </div>
     </section>
+    -->
+
+    <section>
+      <div class="mono muted section-title">Fun Facts</div>
+      <ul class="news-list">
+        <li><span class="dot"></span><span>I am a Formula 1 fan and absolutely a tifosi. Forza Ferrari!</span></li>
+        <li>
+          <span class="dot"></span>
+          <span>
+            Inspired by <a href="https://ruolin.wang/intro.html">Ruolin Wang</a>, I have become
+            a beginner amateur astronomer.
+          </span>
+        </li>
+      </ul>
+      <div class="fun-gallery">
+        <figure class="fun-photo-card">
+          <div class="fun-photo-slot">
+            <img src="assets/comet-tsuchinshan-atlas.jpg" alt="Comet C/2023 A3 (Tsuchinshan-ATLAS)" />
+          </div>
+          <figcaption class="fun-caption">Comet C/2023 A3 (Tsuchinshan-ATLAS), captured with a Sony A7M4 and 20-70mm G lens</figcaption>
+        </figure>
+        <figure class="fun-photo-card">
+          <div class="fun-photo-slot fun-photo-slot-f1">
+            <img src="assets/f1-leclerc.jpg" alt="Charles Leclerc in the Ferrari SF-24 at the 2024 Shanghai Grand Prix" />
+          </div>
+          <figcaption class="fun-caption">Charles Leclerc at the 2024 Shanghai Grand Prix</figcaption>
+        </figure>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="mono muted">Built with the CoSTA Lab design system</div>
+      <!--
       <img class="nus-logo" src="nus-logo-black-horizontal.jpg" alt="National University of Singapore" />
+      -->
     </footer>
   </main>
 </body>
