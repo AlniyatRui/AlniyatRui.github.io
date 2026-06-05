@@ -5,24 +5,21 @@ Personal homepage scaffolded from the CoSTA Lab `design-html` template.
 ## Files
 
 - `index.html`: the GitHub Pages entry point and editable homepage content.
-- `tokens.jsx`: canonical CoSTA Lab tokens and WaveGlyph component.
+- `tokens.jsx`: canonical CoSTA Lab tokens and WaveGlyph component, kept as a design-system reference.
 - `costa-favicon-ink-192.png`: CoSTA Lab favicon.
 - `nus-logo-black-horizontal.jpg`: NUS institutional attribution logo.
 - `.nojekyll`: tells GitHub Pages to serve files as plain static assets.
 
 ## Edit Checklist
 
-Most personal content is near the top of `index.html`:
+Personal content is edited directly in `index.html`:
 
-- `PROFILE.name`: your display name.
-- `PROFILE.title`: your short role or research tagline.
-- `PROFILE.affiliation`: lab, department, and university.
-- `PROFILE.email`: replace `your.email@example.com`.
-- `PROFILE.github`, `PROFILE.scholar`, `PROFILE.cv`: replace placeholder links.
-- `PROFILE.intro`: short bio paragraph.
-- `RESEARCH_AREAS`: four focus areas shown in the hero.
-- `PROJECTS`: selected projects with names, descriptions, and URLs.
-- `PUBLICATIONS`: selected papers with title, venue, authors, and URL.
-- `NEWS`: short recent updates.
+- Header and hero: display name, role/tagline, affiliation, and short bio.
+- Navigation: email, GitHub, Google Scholar, and CV links.
+- Current Focus: four research areas shown beside the hero.
+- News: short recent updates.
+- Selected Projects: project names, descriptions, and URLs.
+- Selected Publications: paper title, venue, authors, and URL.
+- Contact: email and location.
 
 Keep `tokens.jsx` shared unless the lab design system itself changes.
